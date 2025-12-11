@@ -1,0 +1,10 @@
+# Ignorer les fichiers node_modules
+node_modules/
+
+# Ignorer le dossier coverage (résultats des tests Jest)
+coverage/
+
+# Ignorer les fichiers d'IDE (facultatif, mais c'est pratique)
+.idea/
+.vscode/
+.DS_Store
