@@ -1,11 +1,39 @@
-name: CI/CD pipeline
+
+env:      
+  NODE_VERSION: "18"
+  DOCKER_IMAGE_NAME: ANanncy/simple-calc-app
+
+name: CI/CD Simple Calc App
 
 on:
   push:
     branches:
       - main
-      - dev
+      - develop
+  pull_request:
+    branches:
+      - main
 
-env:      
-  NODE_VERSION: "18"
-  DOCKER_IMAGE_NAME: ANanncy/simple-calc-app
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Récupérer le code du dépôt
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2) Installer Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"     # <-- Activation du cache automatique
+
+      # 3) Installer les dépendances
+      - name: Install dependencies
+        run: npm ci
+
+      # 4) Build l’application
+      - name: Build the app
+        run: npm run build
