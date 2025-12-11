@@ -1,7 +1,8 @@
 
 env:      
   NODE_VERSION: "18"
-  DOCKER_IMAGE_NAME: nanncy/simple-calc-app
+  DOCKER_IMAGE_NAME: nanncy/simple-calc-app:latest
+
 
 name: CI/CD Simple Calc App
 
